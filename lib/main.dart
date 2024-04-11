@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:warehouse_web/src/const/http_link.dart';
 
 void main() async {
-  runApp(const MyApp());
+  final HttpLink httpLink = HttpLink(
+    HTTP_LINK,
+  );
+
+  final AuthLink authLink = AuthLink(
+    getToken: () => "",
+  );
+
+  final Link link = authLink.concat(httpLink);
+
+  ValueNotifier<GraphQLClient> client = ValueNotifier(
+    GraphQLClient(
+      cache: GraphQLCache(),
+      link: link,
+    ),
+  );
+
+  runApp(
+    ProviderScope(
+      child: GraphQLProvider(
+        client: client,
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
