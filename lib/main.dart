@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:warehouse_web/src/const/http_link.dart';
-import 'package:warehouse_web/src/service/query.dart';
+import 'package:warehouse_web/src/view/base_view.dart';
 
 void main() {
   runApp(
@@ -22,16 +22,6 @@ class MyApp extends HookWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final getQuestionList = useQuery(
-      QueryOptions(
-        document: gql(Queries.questionList),
-        variables: const {},
-        pollInterval: const Duration(seconds: 100),
-      ),
-    );
-
-    final result = getQuestionList.result;
-
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
@@ -39,24 +29,9 @@ class MyApp extends HookWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Scaffold(
+      home: const Scaffold(
         body: Center(
-          child: result.isLoading
-              ? const CircularProgressIndicator()
-              : result.hasException
-                  ? Text(result.exception.toString())
-                  : ListView.builder(
-                      itemCount:
-                          result.data!['questionList']['questions'].length,
-                      itemBuilder: (context, index) {
-                        final question =
-                            result.data!['questionList']['questions'][index];
-                        return ListTile(
-                          title: Text(question['title']),
-                          subtitle: Text(question['content']),
-                        );
-                      },
-                    ),
+          child: BaseView(),
         ),
       ),
     );

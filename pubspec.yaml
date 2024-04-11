@@ -41,6 +41,7 @@ dependencies:
   graphql_flutter: ^5.0.1
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
+  flutter_randomcolor: ^1.0.15
 
 dev_dependencies:
   flutter_test:

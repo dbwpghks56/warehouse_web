@@ -23,16 +23,16 @@ mixin _$Question {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  String get tag => throw _privateConstructorUsedError;
-  double get time_limit => throw _privateConstructorUsedError;
-  double get memory_limit => throw _privateConstructorUsedError;
-  int get level => throw _privateConstructorUsedError;
-  double get average_tries => throw _privateConstructorUsedError;
-  int get total_tries => throw _privateConstructorUsedError;
-  int get total_person => throw _privateConstructorUsedError;
-  double get success_rate => throw _privateConstructorUsedError;
-  int get total_success => throw _privateConstructorUsedError;
-  String get source => throw _privateConstructorUsedError;
+  String? get tag => throw _privateConstructorUsedError;
+  double? get timeLimit => throw _privateConstructorUsedError;
+  double? get memoryLimit => throw _privateConstructorUsedError;
+  int? get level => throw _privateConstructorUsedError;
+  double? get averageTries => throw _privateConstructorUsedError;
+  int? get totalTries => throw _privateConstructorUsedError;
+  int? get totalPerson => throw _privateConstructorUsedError;
+  double? get successRate => throw _privateConstructorUsedError;
+  int? get totalSuccess => throw _privateConstructorUsedError;
+  String? get source => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,16 +49,16 @@ abstract class $QuestionCopyWith<$Res> {
       {int id,
       String title,
       String content,
-      String tag,
-      double time_limit,
-      double memory_limit,
-      int level,
-      double average_tries,
-      int total_tries,
-      int total_person,
-      double success_rate,
-      int total_success,
-      String source});
+      String? tag,
+      double? timeLimit,
+      double? memoryLimit,
+      int? level,
+      double? averageTries,
+      int? totalTries,
+      int? totalPerson,
+      double? successRate,
+      int? totalSuccess,
+      String? source});
 }
 
 /// @nodoc
@@ -77,16 +77,16 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
     Object? id = null,
     Object? title = null,
     Object? content = null,
-    Object? tag = null,
-    Object? time_limit = null,
-    Object? memory_limit = null,
-    Object? level = null,
-    Object? average_tries = null,
-    Object? total_tries = null,
-    Object? total_person = null,
-    Object? success_rate = null,
-    Object? total_success = null,
-    Object? source = null,
+    Object? tag = freezed,
+    Object? timeLimit = freezed,
+    Object? memoryLimit = freezed,
+    Object? level = freezed,
+    Object? averageTries = freezed,
+    Object? totalTries = freezed,
+    Object? totalPerson = freezed,
+    Object? successRate = freezed,
+    Object? totalSuccess = freezed,
+    Object? source = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -101,46 +101,46 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      tag: null == tag
+      tag: freezed == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
-              as String,
-      time_limit: null == time_limit
-          ? _value.time_limit
-          : time_limit // ignore: cast_nullable_to_non_nullable
-              as double,
-      memory_limit: null == memory_limit
-          ? _value.memory_limit
-          : memory_limit // ignore: cast_nullable_to_non_nullable
-              as double,
-      level: null == level
+              as String?,
+      timeLimit: freezed == timeLimit
+          ? _value.timeLimit
+          : timeLimit // ignore: cast_nullable_to_non_nullable
+              as double?,
+      memoryLimit: freezed == memoryLimit
+          ? _value.memoryLimit
+          : memoryLimit // ignore: cast_nullable_to_non_nullable
+              as double?,
+      level: freezed == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
-              as int,
-      average_tries: null == average_tries
-          ? _value.average_tries
-          : average_tries // ignore: cast_nullable_to_non_nullable
-              as double,
-      total_tries: null == total_tries
-          ? _value.total_tries
-          : total_tries // ignore: cast_nullable_to_non_nullable
-              as int,
-      total_person: null == total_person
-          ? _value.total_person
-          : total_person // ignore: cast_nullable_to_non_nullable
-              as int,
-      success_rate: null == success_rate
-          ? _value.success_rate
-          : success_rate // ignore: cast_nullable_to_non_nullable
-              as double,
-      total_success: null == total_success
-          ? _value.total_success
-          : total_success // ignore: cast_nullable_to_non_nullable
-              as int,
-      source: null == source
+              as int?,
+      averageTries: freezed == averageTries
+          ? _value.averageTries
+          : averageTries // ignore: cast_nullable_to_non_nullable
+              as double?,
+      totalTries: freezed == totalTries
+          ? _value.totalTries
+          : totalTries // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalPerson: freezed == totalPerson
+          ? _value.totalPerson
+          : totalPerson // ignore: cast_nullable_to_non_nullable
+              as int?,
+      successRate: freezed == successRate
+          ? _value.successRate
+          : successRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      totalSuccess: freezed == totalSuccess
+          ? _value.totalSuccess
+          : totalSuccess // ignore: cast_nullable_to_non_nullable
+              as int?,
+      source: freezed == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -157,16 +157,16 @@ abstract class _$$QuestionImplCopyWith<$Res>
       {int id,
       String title,
       String content,
-      String tag,
-      double time_limit,
-      double memory_limit,
-      int level,
-      double average_tries,
-      int total_tries,
-      int total_person,
-      double success_rate,
-      int total_success,
-      String source});
+      String? tag,
+      double? timeLimit,
+      double? memoryLimit,
+      int? level,
+      double? averageTries,
+      int? totalTries,
+      int? totalPerson,
+      double? successRate,
+      int? totalSuccess,
+      String? source});
 }
 
 /// @nodoc
@@ -183,16 +183,16 @@ class __$$QuestionImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? content = null,
-    Object? tag = null,
-    Object? time_limit = null,
-    Object? memory_limit = null,
-    Object? level = null,
-    Object? average_tries = null,
-    Object? total_tries = null,
-    Object? total_person = null,
-    Object? success_rate = null,
-    Object? total_success = null,
-    Object? source = null,
+    Object? tag = freezed,
+    Object? timeLimit = freezed,
+    Object? memoryLimit = freezed,
+    Object? level = freezed,
+    Object? averageTries = freezed,
+    Object? totalTries = freezed,
+    Object? totalPerson = freezed,
+    Object? successRate = freezed,
+    Object? totalSuccess = freezed,
+    Object? source = freezed,
   }) {
     return _then(_$QuestionImpl(
       id: null == id
@@ -207,46 +207,46 @@ class __$$QuestionImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      tag: null == tag
+      tag: freezed == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
-              as String,
-      time_limit: null == time_limit
-          ? _value.time_limit
-          : time_limit // ignore: cast_nullable_to_non_nullable
-              as double,
-      memory_limit: null == memory_limit
-          ? _value.memory_limit
-          : memory_limit // ignore: cast_nullable_to_non_nullable
-              as double,
-      level: null == level
+              as String?,
+      timeLimit: freezed == timeLimit
+          ? _value.timeLimit
+          : timeLimit // ignore: cast_nullable_to_non_nullable
+              as double?,
+      memoryLimit: freezed == memoryLimit
+          ? _value.memoryLimit
+          : memoryLimit // ignore: cast_nullable_to_non_nullable
+              as double?,
+      level: freezed == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
-              as int,
-      average_tries: null == average_tries
-          ? _value.average_tries
-          : average_tries // ignore: cast_nullable_to_non_nullable
-              as double,
-      total_tries: null == total_tries
-          ? _value.total_tries
-          : total_tries // ignore: cast_nullable_to_non_nullable
-              as int,
-      total_person: null == total_person
-          ? _value.total_person
-          : total_person // ignore: cast_nullable_to_non_nullable
-              as int,
-      success_rate: null == success_rate
-          ? _value.success_rate
-          : success_rate // ignore: cast_nullable_to_non_nullable
-              as double,
-      total_success: null == total_success
-          ? _value.total_success
-          : total_success // ignore: cast_nullable_to_non_nullable
-              as int,
-      source: null == source
+              as int?,
+      averageTries: freezed == averageTries
+          ? _value.averageTries
+          : averageTries // ignore: cast_nullable_to_non_nullable
+              as double?,
+      totalTries: freezed == totalTries
+          ? _value.totalTries
+          : totalTries // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalPerson: freezed == totalPerson
+          ? _value.totalPerson
+          : totalPerson // ignore: cast_nullable_to_non_nullable
+              as int?,
+      successRate: freezed == successRate
+          ? _value.successRate
+          : successRate // ignore: cast_nullable_to_non_nullable
+              as double?,
+      totalSuccess: freezed == totalSuccess
+          ? _value.totalSuccess
+          : totalSuccess // ignore: cast_nullable_to_non_nullable
+              as int?,
+      source: freezed == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -259,14 +259,14 @@ class _$QuestionImpl implements _Question {
       required this.title,
       required this.content,
       required this.tag,
-      required this.time_limit,
-      required this.memory_limit,
+      required this.timeLimit,
+      required this.memoryLimit,
       required this.level,
-      required this.average_tries,
-      required this.total_tries,
-      required this.total_person,
-      required this.success_rate,
-      required this.total_success,
+      required this.averageTries,
+      required this.totalTries,
+      required this.totalPerson,
+      required this.successRate,
+      required this.totalSuccess,
       required this.source});
 
   factory _$QuestionImpl.fromJson(Map<String, dynamic> json) =>
@@ -279,29 +279,29 @@ class _$QuestionImpl implements _Question {
   @override
   final String content;
   @override
-  final String tag;
+  final String? tag;
   @override
-  final double time_limit;
+  final double? timeLimit;
   @override
-  final double memory_limit;
+  final double? memoryLimit;
   @override
-  final int level;
+  final int? level;
   @override
-  final double average_tries;
+  final double? averageTries;
   @override
-  final int total_tries;
+  final int? totalTries;
   @override
-  final int total_person;
+  final int? totalPerson;
   @override
-  final double success_rate;
+  final double? successRate;
   @override
-  final int total_success;
+  final int? totalSuccess;
   @override
-  final String source;
+  final String? source;
 
   @override
   String toString() {
-    return 'Question(id: $id, title: $title, content: $content, tag: $tag, time_limit: $time_limit, memory_limit: $memory_limit, level: $level, average_tries: $average_tries, total_tries: $total_tries, total_person: $total_person, success_rate: $success_rate, total_success: $total_success, source: $source)';
+    return 'Question(id: $id, title: $title, content: $content, tag: $tag, timeLimit: $timeLimit, memoryLimit: $memoryLimit, level: $level, averageTries: $averageTries, totalTries: $totalTries, totalPerson: $totalPerson, successRate: $successRate, totalSuccess: $totalSuccess, source: $source)';
   }
 
   @override
@@ -313,21 +313,21 @@ class _$QuestionImpl implements _Question {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.tag, tag) || other.tag == tag) &&
-            (identical(other.time_limit, time_limit) ||
-                other.time_limit == time_limit) &&
-            (identical(other.memory_limit, memory_limit) ||
-                other.memory_limit == memory_limit) &&
+            (identical(other.timeLimit, timeLimit) ||
+                other.timeLimit == timeLimit) &&
+            (identical(other.memoryLimit, memoryLimit) ||
+                other.memoryLimit == memoryLimit) &&
             (identical(other.level, level) || other.level == level) &&
-            (identical(other.average_tries, average_tries) ||
-                other.average_tries == average_tries) &&
-            (identical(other.total_tries, total_tries) ||
-                other.total_tries == total_tries) &&
-            (identical(other.total_person, total_person) ||
-                other.total_person == total_person) &&
-            (identical(other.success_rate, success_rate) ||
-                other.success_rate == success_rate) &&
-            (identical(other.total_success, total_success) ||
-                other.total_success == total_success) &&
+            (identical(other.averageTries, averageTries) ||
+                other.averageTries == averageTries) &&
+            (identical(other.totalTries, totalTries) ||
+                other.totalTries == totalTries) &&
+            (identical(other.totalPerson, totalPerson) ||
+                other.totalPerson == totalPerson) &&
+            (identical(other.successRate, successRate) ||
+                other.successRate == successRate) &&
+            (identical(other.totalSuccess, totalSuccess) ||
+                other.totalSuccess == totalSuccess) &&
             (identical(other.source, source) || other.source == source));
   }
 
@@ -339,14 +339,14 @@ class _$QuestionImpl implements _Question {
       title,
       content,
       tag,
-      time_limit,
-      memory_limit,
+      timeLimit,
+      memoryLimit,
       level,
-      average_tries,
-      total_tries,
-      total_person,
-      success_rate,
-      total_success,
+      averageTries,
+      totalTries,
+      totalPerson,
+      successRate,
+      totalSuccess,
       source);
 
   @JsonKey(ignore: true)
@@ -368,16 +368,16 @@ abstract class _Question implements Question {
       {required final int id,
       required final String title,
       required final String content,
-      required final String tag,
-      required final double time_limit,
-      required final double memory_limit,
-      required final int level,
-      required final double average_tries,
-      required final int total_tries,
-      required final int total_person,
-      required final double success_rate,
-      required final int total_success,
-      required final String source}) = _$QuestionImpl;
+      required final String? tag,
+      required final double? timeLimit,
+      required final double? memoryLimit,
+      required final int? level,
+      required final double? averageTries,
+      required final int? totalTries,
+      required final int? totalPerson,
+      required final double? successRate,
+      required final int? totalSuccess,
+      required final String? source}) = _$QuestionImpl;
 
   factory _Question.fromJson(Map<String, dynamic> json) =
       _$QuestionImpl.fromJson;
@@ -389,25 +389,25 @@ abstract class _Question implements Question {
   @override
   String get content;
   @override
-  String get tag;
+  String? get tag;
   @override
-  double get time_limit;
+  double? get timeLimit;
   @override
-  double get memory_limit;
+  double? get memoryLimit;
   @override
-  int get level;
+  int? get level;
   @override
-  double get average_tries;
+  double? get averageTries;
   @override
-  int get total_tries;
+  int? get totalTries;
   @override
-  int get total_person;
+  int? get totalPerson;
   @override
-  double get success_rate;
+  double? get successRate;
   @override
-  int get total_success;
+  int? get totalSuccess;
   @override
-  String get source;
+  String? get source;
   @override
   @JsonKey(ignore: true)
   _$$QuestionImplCopyWith<_$QuestionImpl> get copyWith =>
