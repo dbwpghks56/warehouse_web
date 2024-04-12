@@ -19,9 +19,22 @@ class BaseView extends HookWidget {
       ),
     );
 
+    final variableData = useState<Map<String, dynamic>>({});
+    final pageList = useState<List<int>>([]);
     final result = getQuestionList.result;
     // final QuestionList questionList =
     //     QuestionList.fromJson(result.data!['questionList']);
+
+    useEffect(() {
+      int totalCount = result.data?['questionList']['total'] ?? 10;
+      int perPage = result.data?['questionList']['perPage'] ?? 1;
+
+      int totalPage = (totalCount / perPage).ceil();
+
+      pageList.value = List.generate(totalPage, (index) => index + 1);
+
+      return null;
+    }, [result]);
 
     return Padding(
       padding: const EdgeInsets.only(
@@ -43,6 +56,14 @@ class BaseView extends HookWidget {
                       hintText: 'Search',
                       border: InputBorder.none,
                     ),
+                    onChanged: (value) {
+                      variableData.value["source"] = value;
+                    },
+                    onSubmitted: (value) {
+                      getQuestionList.fetchMore(morefetchOption(
+                        varialbeData: variableData.value,
+                      ));
+                    },
                   ),
                 ),
                 const SizedBox(
@@ -55,7 +76,11 @@ class BaseView extends HookWidget {
                   ),
                   padding: const EdgeInsets.all(12),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      getQuestionList.fetchMore(morefetchOption(
+                        varialbeData: variableData.value,
+                      ));
+                    },
                     child: const Icon(Icons.search),
                   ),
                 ),
@@ -92,28 +117,30 @@ class BaseView extends HookWidget {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                getQuestionList.fetchMore(morefetchOption(
-                                  searchPage: result.data!['questionList']
-                                          ['currentPage'] -
-                                      1,
-                                ));
-                              },
-                              icon: const Icon(Icons.arrow_back),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                getQuestionList.fetchMore(morefetchOption(
-                                  searchPage: result.data!['questionList']
-                                          ['currentPage'] +
-                                      1,
-                                ));
-                              },
-                              icon: const Icon(Icons.arrow_forward),
-                            ),
-                          ],
+                          children: pageList.value
+                              .map(
+                                (e) => GestureDetector(
+                                  onTap: () {
+                                    variableData.value["page"] = e;
+                                    getQuestionList.fetchMore(morefetchOption(
+                                      varialbeData: variableData.value,
+                                    ));
+                                  },
+                                  child: Container(
+                                    width: 40,
+                                    margin: const EdgeInsets.all(4),
+                                    padding: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Center(
+                                      child: Text(e.toString()),
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
                         ),
                       ],
                     ),
@@ -124,14 +151,10 @@ class BaseView extends HookWidget {
 }
 
 FetchMoreOptions morefetchOption({
-  int? searchPage,
-  String? searchSource,
+  Map<String, dynamic>? varialbeData,
 }) {
   return FetchMoreOptions(
-    variables: {
-      'page': searchPage ?? 1,
-      'source': searchSource ?? "",
-    },
+    variables: varialbeData ?? {},
     updateQuery: (previousResultData, fetchMoreResultData) {
       return fetchMoreResultData;
     },
