@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/proxy/*"
+  to = "http://115.178.65.180:8080/graphql"
+  status = 200
+  force = true
