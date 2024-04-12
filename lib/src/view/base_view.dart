@@ -16,7 +16,6 @@ class BaseView extends HookWidget {
       QueryOptions(
         document: gql(Queries.questionList),
         variables: const {},
-        pollInterval: const Duration(seconds: 100),
       ),
     );
 
@@ -95,37 +94,22 @@ class BaseView extends HookWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                getQuestionList.fetchMore(morefetchOption(
+                                  searchPage: result.data!['questionList']
+                                          ['currentPage'] -
+                                      1,
+                                ));
+                              },
                               icon: const Icon(Icons.arrow_back),
                             ),
                             IconButton(
                               onPressed: () {
-                                int pageNext = result.data!['questionList']
-                                        ['currentPage'] +
-                                    1;
-                                getQuestionList.fetchMore(
-                                  FetchMoreOptions(
-                                    variables: {
-                                      'page': pageNext,
-                                    },
-                                    updateQuery: (Map<String, dynamic>?
-                                            previousResultData,
-                                        Map<String, dynamic>?
-                                            fetchMoreResultData) {
-                                      final List<dynamic> questions = [
-                                        ...previousResultData!['questionList']
-                                            ['questions'],
-                                        ...fetchMoreResultData!['questionList']
-                                            ['questions'],
-                                      ];
-
-                                      result.data!['questionList']
-                                          ['questions'] = questions;
-                                      return result.data!['questionList']
-                                          ['questions'];
-                                    },
-                                  ),
-                                );
+                                getQuestionList.fetchMore(morefetchOption(
+                                  searchPage: result.data!['questionList']
+                                          ['currentPage'] +
+                                      1,
+                                ));
                               },
                               icon: const Icon(Icons.arrow_forward),
                             ),
@@ -137,4 +121,19 @@ class BaseView extends HookWidget {
       ),
     );
   }
+}
+
+FetchMoreOptions morefetchOption({
+  int? searchPage,
+  String? searchSource,
+}) {
+  return FetchMoreOptions(
+    variables: {
+      'page': searchPage ?? 1,
+      'source': searchSource ?? "",
+    },
+    updateQuery: (previousResultData, fetchMoreResultData) {
+      return fetchMoreResultData;
+    },
+  );
 }

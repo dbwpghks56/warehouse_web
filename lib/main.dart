@@ -26,7 +26,7 @@ class MyApp extends HookWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF89D3FB)),
         useMaterial3: true,
       ),
       home: const Scaffold(
