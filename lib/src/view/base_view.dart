@@ -126,16 +126,19 @@ class BaseView extends HookWidget {
                                       varialbeData: variableData.value,
                                     ));
                                   },
-                                  child: Container(
-                                    width: 40,
-                                    margin: const EdgeInsets.all(4),
-                                    padding: const EdgeInsets.all(4),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Center(
-                                      child: Text(e.toString()),
+                                  child: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: Container(
+                                      width: 40,
+                                      margin: const EdgeInsets.all(4),
+                                      padding: const EdgeInsets.all(4),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Center(
+                                        child: Text(e.toString()),
+                                      ),
                                     ),
                                   ),
                                 ),
