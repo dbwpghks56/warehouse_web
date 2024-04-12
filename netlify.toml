@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/api"
+  to = "http://115.178.65.180:8080/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
