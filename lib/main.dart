@@ -31,7 +31,10 @@ class MyApp extends HookWidget {
       ),
       home: const Scaffold(
         body: Center(
-          child: BaseView(),
+          child: SizedBox(
+            width: 900,
+            child: BaseView(),
+          ),
         ),
       ),
     );

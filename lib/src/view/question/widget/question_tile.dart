@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:warehouse_web/src/const/solved_rank.dart';
 import 'package:warehouse_web/src/model/question.dart';
+import 'package:warehouse_web/src/view/question/widget/question_dialog.dart';
 import 'package:warehouse_web/src/view/question/widget/question_tag.dart';
 
 class QuestionTile extends StatelessWidget {
@@ -19,26 +19,6 @@ class QuestionTile extends StatelessWidget {
 
     final String levelData;
 
-    if (question.source == "solved.ac") {
-      levelData = rankLevel[question.level!];
-    } else if (question.source == "leetcode") {
-      switch (question.level) {
-        case 1:
-          levelData = "Easy";
-          break;
-        case 2:
-          levelData = "Medium";
-          break;
-        case 3:
-          levelData = "Hard";
-          break;
-        default:
-          levelData = "Unknown";
-      }
-    } else {
-      levelData = "Level ${question.level}";
-    }
-
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
@@ -48,66 +28,85 @@ class QuestionTile extends StatelessWidget {
       ),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        question.title,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return QuestionDialog(
+                  question: question,
+                );
+              },
+            );
+          },
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("출처 : ${question.source}"),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          question.title,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text("출처 : ${question.source}")
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    children: tags.map((e) => QuestionTag(tagName: e)).toList(),
-                  )
+                        const SizedBox(
+                          width: 8,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      children:
+                          tags.map((e) => QuestionTag(tagName: e)).toList(),
+                    )
+                  ],
+                ),
+              ),
+              Column(
+                children: [
+                  Text("시간 제한 : ${question.timeLimit ?? '정보 없음'}"),
+                  Text("공간 제한 : ${question.memoryLimit ?? '정보 없음'}"),
+                  Text("평균시도 : ${question.averageTries ?? '정보 없음'}"),
+                  Text("총 시도 : ${question.totalTries ?? '정보 없음'}"),
                 ],
               ),
-            ),
-            Column(
-              children: [
-                Text("시간 제한 : ${question.timeLimit ?? '정보 없음'}"),
-                Text("공간 제한 : ${question.memoryLimit ?? '정보 없음'}"),
-                Text("평균시도 : ${question.averageTries ?? '정보 없음'}"),
-                Text("총 시도 : ${question.totalTries ?? '정보 없음'}"),
-              ],
-            ),
-            const SizedBox(width: 12),
-            Column(
-              children: [
-                Text(
-                  levelData,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+              const SizedBox(width: 12),
+              Column(
+                children: [
+                  Text(
+                    getRank(question),
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Text(
-                  "도전한 사람 : ${question.totalPerson ?? '정보 없음'}",
-                ),
-                Text(
-                  "정답률 : ${question.successRate?.toStringAsFixed(2) ?? '정보 없음'} %",
-                ),
-                Text(
-                  "완료한 사람 : ${question.totalSuccess ?? '정보 없음'}",
-                ),
-              ],
-            )
-          ],
+                  Text(
+                    "도전한 사람 : ${question.totalPerson ?? '정보 없음'}",
+                  ),
+                  Text(
+                    question.successRate == null
+                        ? "정답률 : 정보 없음"
+                        : "정답률 : ${question.successRate?.toStringAsFixed(2)} %",
+                  ),
+                  Text(
+                    "완료한 사람 : ${question.totalSuccess ?? '정보 없음'}",
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

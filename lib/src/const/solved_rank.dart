@@ -1,3 +1,5 @@
+import 'package:warehouse_web/src/model/question.dart';
+
 List<String> rankLevel = [
   'Unrated',
   'Bronze V',
@@ -31,3 +33,25 @@ List<String> rankLevel = [
   'Ruby II',
   'Ruby I'
 ];
+
+String getRank(Question question) {
+  if (question.source == "solved.ac") {
+    return rankLevel[question.level!];
+  } else if (question.source == "leetcode") {
+    switch (question.level) {
+      case 1:
+        return "Easy";
+        break;
+      case 2:
+        return "Medium";
+        break;
+      case 3:
+        return "Hard";
+        break;
+      default:
+        return "Unknown";
+    }
+  } else {
+    return "Level ${question.level}";
+  }
+}
