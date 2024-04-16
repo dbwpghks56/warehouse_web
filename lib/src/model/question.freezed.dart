@@ -25,13 +25,13 @@ mixin _$Question {
   String get content => throw _privateConstructorUsedError;
   int? get problemId => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
-  double? get timeLimit => throw _privateConstructorUsedError;
-  double? get memoryLimit => throw _privateConstructorUsedError;
+  String? get timeLimit => throw _privateConstructorUsedError;
+  String? get memoryLimit => throw _privateConstructorUsedError;
   int? get level => throw _privateConstructorUsedError;
   double? get averageTries => throw _privateConstructorUsedError;
   int? get totalTries => throw _privateConstructorUsedError;
   int? get totalPerson => throw _privateConstructorUsedError;
-  double? get successRate => throw _privateConstructorUsedError;
+  String? get successRate => throw _privateConstructorUsedError;
   int? get totalSuccess => throw _privateConstructorUsedError;
   String? get source => throw _privateConstructorUsedError;
 
@@ -52,13 +52,13 @@ abstract class $QuestionCopyWith<$Res> {
       String content,
       int? problemId,
       String? tag,
-      double? timeLimit,
-      double? memoryLimit,
+      String? timeLimit,
+      String? memoryLimit,
       int? level,
       double? averageTries,
       int? totalTries,
       int? totalPerson,
-      double? successRate,
+      String? successRate,
       int? totalSuccess,
       String? source});
 }
@@ -115,11 +115,11 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
       timeLimit: freezed == timeLimit
           ? _value.timeLimit
           : timeLimit // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       memoryLimit: freezed == memoryLimit
           ? _value.memoryLimit
           : memoryLimit // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       level: freezed == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -139,7 +139,7 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
       successRate: freezed == successRate
           ? _value.successRate
           : successRate // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       totalSuccess: freezed == totalSuccess
           ? _value.totalSuccess
           : totalSuccess // ignore: cast_nullable_to_non_nullable
@@ -166,13 +166,13 @@ abstract class _$$QuestionImplCopyWith<$Res>
       String content,
       int? problemId,
       String? tag,
-      double? timeLimit,
-      double? memoryLimit,
+      String? timeLimit,
+      String? memoryLimit,
       int? level,
       double? averageTries,
       int? totalTries,
       int? totalPerson,
-      double? successRate,
+      String? successRate,
       int? totalSuccess,
       String? source});
 }
@@ -227,11 +227,11 @@ class __$$QuestionImplCopyWithImpl<$Res>
       timeLimit: freezed == timeLimit
           ? _value.timeLimit
           : timeLimit // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       memoryLimit: freezed == memoryLimit
           ? _value.memoryLimit
           : memoryLimit // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       level: freezed == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -251,7 +251,7 @@ class __$$QuestionImplCopyWithImpl<$Res>
       successRate: freezed == successRate
           ? _value.successRate
           : successRate // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       totalSuccess: freezed == totalSuccess
           ? _value.totalSuccess
           : totalSuccess // ignore: cast_nullable_to_non_nullable
@@ -297,9 +297,9 @@ class _$QuestionImpl implements _Question {
   @override
   final String? tag;
   @override
-  final double? timeLimit;
+  final String? timeLimit;
   @override
-  final double? memoryLimit;
+  final String? memoryLimit;
   @override
   final int? level;
   @override
@@ -309,7 +309,7 @@ class _$QuestionImpl implements _Question {
   @override
   final int? totalPerson;
   @override
-  final double? successRate;
+  final String? successRate;
   @override
   final int? totalSuccess;
   @override
@@ -389,13 +389,13 @@ abstract class _Question implements Question {
       required final String content,
       required final int? problemId,
       required final String? tag,
-      required final double? timeLimit,
-      required final double? memoryLimit,
+      required final String? timeLimit,
+      required final String? memoryLimit,
       required final int? level,
       required final double? averageTries,
       required final int? totalTries,
       required final int? totalPerson,
-      required final double? successRate,
+      required final String? successRate,
       required final int? totalSuccess,
       required final String? source}) = _$QuestionImpl;
 
@@ -413,9 +413,9 @@ abstract class _Question implements Question {
   @override
   String? get tag;
   @override
-  double? get timeLimit;
+  String? get timeLimit;
   @override
-  double? get memoryLimit;
+  String? get memoryLimit;
   @override
   int? get level;
   @override
@@ -425,7 +425,7 @@ abstract class _Question implements Question {
   @override
   int? get totalPerson;
   @override
-  double? get successRate;
+  String? get successRate;
   @override
   int? get totalSuccess;
   @override

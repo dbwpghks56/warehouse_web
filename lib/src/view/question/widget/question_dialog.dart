@@ -53,9 +53,7 @@ class QuestionDialog extends StatelessWidget {
               "도전한 사람 : ${question.totalPerson ?? '정보 없음'}",
             ),
             Text(
-              question.successRate == null
-                  ? "정답률 : 정보 없음"
-                  : "정답률 : ${question.successRate?.toStringAsFixed(2)} %",
+              "정답률 : ${question.successRate ?? '정보없음'}",
             ),
             Text(
               "완료한 사람 : ${question.totalSuccess ?? '정보 없음'}",
