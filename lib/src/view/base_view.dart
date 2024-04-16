@@ -16,9 +16,6 @@ class BaseView extends HookWidget {
       QueryOptions(
         document: gql(Queries.questionList),
         variables: const {},
-        onError: (error) {
-          print(error);
-        },
       ),
     );
 
@@ -60,7 +57,7 @@ class BaseView extends HookWidget {
                       border: InputBorder.none,
                     ),
                     onChanged: (value) {
-                      variableData.value["source"] = value;
+                      variableData.value["tag"] = value;
                     },
                     onSubmitted: (value) {
                       getQuestionList.fetchMore(morefetchOption(
