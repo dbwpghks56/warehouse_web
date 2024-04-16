@@ -13,7 +13,7 @@ class QuestionDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> tags = question.tag!.split(' , ');
+    final List<String> tags = question.tag!.split(', ');
     tags.removeWhere((element) => element.isEmpty);
 
     return Dialog(

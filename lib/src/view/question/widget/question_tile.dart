@@ -14,7 +14,7 @@ class QuestionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> tags = question.tag!.split(' , ');
+    final List<String> tags = question.tag!.split(', ');
     tags.removeWhere((element) => element.isEmpty);
 
     final String levelData;
