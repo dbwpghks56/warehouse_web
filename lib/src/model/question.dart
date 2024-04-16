@@ -9,7 +9,7 @@ class Question with _$Question {
     required int id,
     required String title,
     required String content,
-    required int problemId,
+    required int? problemId,
     required String? tag,
     required double? timeLimit,
     required double? memoryLimit,
