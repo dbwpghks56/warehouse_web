@@ -9,6 +9,12 @@ String HTTP_LINK = html.window.location.href.contains('localhost')
 
 final HttpLink httpLink = HttpLink(
   HTTP_LINK,
+  defaultHeaders: {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers":
+        "Origin, Content-Type, X-Auth-Token, Accept, Authorization, X-Request-With",
+  },
 );
 
 ValueNotifier<GraphQLClient> client = ValueNotifier(
