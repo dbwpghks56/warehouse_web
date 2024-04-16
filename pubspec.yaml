@@ -38,7 +38,7 @@ dependencies:
   hooks_riverpod: ^2.5.1
   flutter_hooks: ^0.20.5
   riverpod_annotation: ^2.3.5
-  graphql_flutter: ^5.0.1
+  graphql_flutter: ^5.1.2
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
   flutter_randomcolor: ^1.0.15

@@ -16,6 +16,9 @@ class BaseView extends HookWidget {
       QueryOptions(
         document: gql(Queries.questionList),
         variables: const {},
+        onError: (error) {
+          print(error);
+        },
       ),
     );
 
