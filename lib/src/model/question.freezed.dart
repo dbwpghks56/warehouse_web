@@ -23,6 +23,7 @@ mixin _$Question {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  int get problemId => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
   double? get timeLimit => throw _privateConstructorUsedError;
   double? get memoryLimit => throw _privateConstructorUsedError;
@@ -49,6 +50,7 @@ abstract class $QuestionCopyWith<$Res> {
       {int id,
       String title,
       String content,
+      int problemId,
       String? tag,
       double? timeLimit,
       double? memoryLimit,
@@ -77,6 +79,7 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
     Object? id = null,
     Object? title = null,
     Object? content = null,
+    Object? problemId = null,
     Object? tag = freezed,
     Object? timeLimit = freezed,
     Object? memoryLimit = freezed,
@@ -101,6 +104,10 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      problemId: null == problemId
+          ? _value.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as int,
       tag: freezed == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
@@ -157,6 +164,7 @@ abstract class _$$QuestionImplCopyWith<$Res>
       {int id,
       String title,
       String content,
+      int problemId,
       String? tag,
       double? timeLimit,
       double? memoryLimit,
@@ -183,6 +191,7 @@ class __$$QuestionImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? content = null,
+    Object? problemId = null,
     Object? tag = freezed,
     Object? timeLimit = freezed,
     Object? memoryLimit = freezed,
@@ -207,6 +216,10 @@ class __$$QuestionImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      problemId: null == problemId
+          ? _value.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as int,
       tag: freezed == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
@@ -258,6 +271,7 @@ class _$QuestionImpl implements _Question {
       {required this.id,
       required this.title,
       required this.content,
+      required this.problemId,
       required this.tag,
       required this.timeLimit,
       required this.memoryLimit,
@@ -278,6 +292,8 @@ class _$QuestionImpl implements _Question {
   final String title;
   @override
   final String content;
+  @override
+  final int problemId;
   @override
   final String? tag;
   @override
@@ -301,7 +317,7 @@ class _$QuestionImpl implements _Question {
 
   @override
   String toString() {
-    return 'Question(id: $id, title: $title, content: $content, tag: $tag, timeLimit: $timeLimit, memoryLimit: $memoryLimit, level: $level, averageTries: $averageTries, totalTries: $totalTries, totalPerson: $totalPerson, successRate: $successRate, totalSuccess: $totalSuccess, source: $source)';
+    return 'Question(id: $id, title: $title, content: $content, problemId: $problemId, tag: $tag, timeLimit: $timeLimit, memoryLimit: $memoryLimit, level: $level, averageTries: $averageTries, totalTries: $totalTries, totalPerson: $totalPerson, successRate: $successRate, totalSuccess: $totalSuccess, source: $source)';
   }
 
   @override
@@ -312,6 +328,8 @@ class _$QuestionImpl implements _Question {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.problemId, problemId) ||
+                other.problemId == problemId) &&
             (identical(other.tag, tag) || other.tag == tag) &&
             (identical(other.timeLimit, timeLimit) ||
                 other.timeLimit == timeLimit) &&
@@ -338,6 +356,7 @@ class _$QuestionImpl implements _Question {
       id,
       title,
       content,
+      problemId,
       tag,
       timeLimit,
       memoryLimit,
@@ -368,6 +387,7 @@ abstract class _Question implements Question {
       {required final int id,
       required final String title,
       required final String content,
+      required final int problemId,
       required final String? tag,
       required final double? timeLimit,
       required final double? memoryLimit,
@@ -388,6 +408,8 @@ abstract class _Question implements Question {
   String get title;
   @override
   String get content;
+  @override
+  int get problemId;
   @override
   String? get tag;
   @override
