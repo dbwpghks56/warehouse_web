@@ -13,7 +13,7 @@ final HttpLink httpLink = HttpLink(
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers":
-        "Origin, Content-Type, X-Auth-Token, Accept, Authorization, X-Request-With",
+        "Origin, Content-Type, X-Auth-Token, Accept, Authorization, X-Request-With, X-From",
   },
 );
 
