@@ -76,6 +76,7 @@ class BaseView extends HookWidget {
                   ),
                   padding: const EdgeInsets.all(12),
                   child: GestureDetector(
+                    behavior: HitTestBehavior.translucent,
                     onTap: () {
                       getQuestionList.fetchMore(morefetchOption(
                         varialbeData: variableData.value,
