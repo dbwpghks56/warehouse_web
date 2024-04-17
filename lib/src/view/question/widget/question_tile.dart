@@ -93,13 +93,13 @@ class QuestionTile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "도전한 사람 : ${question.totalPerson ?? '정보 없음'}",
+                    "맞힌 사람 : ${question.totalPerson ?? '정보 없음'}",
                   ),
                   Text(
                     "정답률 : ${question.successRate ?? '정보 없음'} %",
                   ),
                   Text(
-                    "완료한 사람 : ${question.totalSuccess ?? '정보 없음'}",
+                    "맞춘 시도 : ${question.totalSuccess ?? '정보 없음'}",
                   ),
                 ],
               )

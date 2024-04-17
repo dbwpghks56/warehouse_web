@@ -75,7 +75,7 @@ class QuestionDialog extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                "도전한 사람 : ${question.totalPerson ?? '정보 없음'}",
+                "맞힌 사람 : ${question.totalPerson ?? '정보 없음'}",
               ),
               const SizedBox(
                 height: 12,
@@ -87,7 +87,7 @@ class QuestionDialog extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                "완료한 사람 : ${question.totalSuccess ?? '정보 없음'}",
+                "맞춘 시도 : ${question.totalSuccess ?? '정보 없음'}",
               ),
               const SizedBox(
                 height: 12,
