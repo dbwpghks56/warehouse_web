@@ -35,23 +35,5 @@ List<String> rankLevel = [
 ];
 
 String getRank(Question question) {
-  if (question.source == "solved.ac") {
-    return rankLevel[question.level!];
-  } else if (question.source == "leetcode") {
-    switch (question.level) {
-      case 1:
-        return "Easy";
-        break;
-      case 2:
-        return "Medium";
-        break;
-      case 3:
-        return "Hard";
-        break;
-      default:
-        return "Unknown";
-    }
-  } else {
-    return "Level ${question.level}";
-  }
+  return rankLevel[question.level!];
 }
