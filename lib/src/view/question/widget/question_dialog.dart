@@ -17,7 +17,13 @@ class QuestionDialog extends StatelessWidget {
     tags.removeWhere((element) => element.isEmpty);
 
     return Dialog(
+      backgroundColor: Colors.white,
       child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white,
+        ),
+        
         padding: const EdgeInsets.all(16.0),
         width: 700,
         height: 600,

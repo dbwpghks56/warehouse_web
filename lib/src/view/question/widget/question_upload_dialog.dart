@@ -28,7 +28,12 @@ class QuestionUploadDialog extends HookWidget {
     final flag = useState(true);
 
     return Dialog(
+      backgroundColor: Colors.white,
       child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white,
+        ),
         padding: const EdgeInsets.all(12),
         width: 200,
         height: 200,

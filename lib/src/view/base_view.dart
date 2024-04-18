@@ -22,15 +22,15 @@ class BaseView extends HookWidget {
     final variableData = useState<Map<String, dynamic>>({});
     final pageList = useState<List<int>>([]);
     final result = getQuestionList.result;
+    final currentPage = useState(0);
     // final QuestionList questionList =
     //     QuestionList.fromJson(result.data!['questionList']);
 
     useEffect(() {
       int totalCount = result.data?['questionList']['total'] ?? 10;
       int perPage = result.data?['questionList']['perPage'] ?? 1;
-
+      currentPage.value = result.data?['questionList']['currentPage'] ?? 1;
       int totalPage = (totalCount / perPage).ceil();
-
       pageList.value = List.generate(totalPage, (index) => index + 1);
 
       return null;
@@ -98,7 +98,7 @@ class BaseView extends HookWidget {
                   : Column(
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height - 120,
+                          height: MediaQuery.of(context).size.height - 170,
                           child: ListView.builder(
                             itemCount: result
                                 .data!['questionList']['questions'].length,
@@ -116,35 +116,56 @@ class BaseView extends HookWidget {
                             },
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: pageList.value
-                              .map(
-                                (e) => GestureDetector(
-                                  onTap: () {
-                                    variableData.value["page"] = e;
-                                    getQuestionList.fetchMore(morefetchOption(
-                                      varialbeData: variableData.value,
-                                    ));
-                                  },
-                                  child: MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    child: Container(
-                                      width: 40,
-                                      margin: const EdgeInsets.all(4),
-                                      padding: const EdgeInsets.all(4),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Center(
-                                        child: Text(e.toString()),
+                        SizedBox(
+                          height: 100,
+                          child: SingleChildScrollView(
+                            // scrollDirection: Axis.horizontal,
+                            child: Wrap(
+                              children: pageList.value
+                                  .map(
+                                    (e) => GestureDetector(
+                                      onTap: () {
+                                        variableData.value["page"] = e;
+                                        getQuestionList
+                                            .fetchMore(morefetchOption(
+                                          varialbeData: variableData.value,
+                                        ));
+                                      },
+                                      child: MouseRegion(
+                                        cursor: SystemMouseCursors.click,
+                                        child: Container(
+                                          width: 40,
+                                          margin: const EdgeInsets.all(4),
+                                          padding: const EdgeInsets.all(4),
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: currentPage.value == e
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: currentPage.value == e
+                                                ? const Color(0xFF89D3FB)
+                                                : Colors.white,
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              e.toString(),
+                                              style: TextStyle(
+                                                color: currentPage.value == e
+                                                    ? Colors.white
+                                                    : Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              )
-                              .toList(),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
                         ),
                       ],
                     ),

@@ -41,7 +41,7 @@ class MyApp extends HookWidget {
             children: [
               const BaseView(),
               Positioned(
-                bottom: 60, // 원하는 위치로 조정
+                bottom: 110, // 원하는 위치로 조정
                 right: 20, // 원하는 위치로 조정
                 child: FloatingActionButton(
                   onPressed: () {

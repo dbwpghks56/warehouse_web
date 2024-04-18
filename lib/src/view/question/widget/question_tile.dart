@@ -67,7 +67,8 @@ class QuestionTile extends StatelessWidget {
                     const SizedBox(
                       height: 8,
                     ),
-                    Row(
+                    Wrap(
+                      runSpacing: 4,
                       children:
                           tags.map((e) => QuestionTag(tagName: e)).toList(),
                     )
