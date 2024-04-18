@@ -1,29 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:warehouse_web/src/const/solved_rank.dart';
 import 'package:warehouse_web/src/model/question.dart';
+import 'package:warehouse_web/src/service/query.dart';
 import 'package:warehouse_web/src/view/question/widget/question_tag.dart';
 
-class QuestionDialog extends StatelessWidget {
+class QuestionDialog extends HookWidget {
   const QuestionDialog({
     super.key,
-    required this.question,
+    required this.questionId,
   });
 
-  final Question question;
+  final int questionId;
 
   @override
   Widget build(BuildContext context) {
-    final List<String> tags = question.tag!.split(', ');
-    tags.removeWhere((element) => element.isEmpty);
+    final detailQuestionQuery = useQuery(
+      QueryOptions(
+        document: gql(Queries.detailQuestion),
+        variables: {
+          'id': questionId,
+        },
+      ),
+    );
+
+    final result = detailQuestionQuery.result;
+
+    useEffect(() {
+      return null;
+    }, [result]);
 
     return Dialog(
       backgroundColor: Colors.white,
-      child: Container(
+      child: buildDialog(result),
+    );
+  }
+
+  Widget buildDialog(QueryResult<Object?> result) {
+    if (result.isLoading) {
+      return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: Colors.white,
         ),
-        
+        padding: const EdgeInsets.all(16.0),
+        width: 700,
+        height: 600,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    } else if (result.hasException) {
+      return Center(
+        child: Text(result.exception.toString()),
+      );
+    } else {
+      final Question question =
+          Question.fromJson(result.data?["detailQuestion"]);
+      final List<String> tags = question.tag!.split(', ');
+      tags.removeWhere((element) => element.isEmpty);
+
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white,
+        ),
         padding: const EdgeInsets.all(16.0),
         width: 700,
         height: 600,
@@ -104,7 +146,7 @@ class QuestionDialog extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

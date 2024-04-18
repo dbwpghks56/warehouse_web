@@ -20,7 +20,6 @@ class Queries {
         questions {
           id
           title
-          content
           tag
           timeLimit
           memoryLimit
@@ -34,4 +33,23 @@ class Queries {
         }
       }
     }""";
+
+  static String detailQuestion = """
+query detailQuestion(\$id: Long!) {
+  detailQuestion(id: \$id) {
+    id
+    title
+    content
+    tag
+    timeLimit
+    memoryLimit
+    level
+    averageTries
+    totalTries
+    totalPerson
+    successRate
+    totalSuccess
+    source
+  }
+}""";
 }

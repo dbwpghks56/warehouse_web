@@ -10,7 +10,7 @@ _$QuestionImpl _$$QuestionImplFromJson(Map<String, dynamic> json) =>
     _$QuestionImpl(
       id: json['id'] as int,
       title: json['title'] as String,
-      content: json['content'] as String,
+      content: json['content'] as String?,
       problemId: json['problemId'] as int?,
       tag: json['tag'] as String?,
       timeLimit: json['timeLimit'] as String?,

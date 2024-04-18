@@ -35,7 +35,7 @@ class QuestionTile extends StatelessWidget {
               context: context,
               builder: (BuildContext context) {
                 return QuestionDialog(
-                  question: question,
+                  questionId: question.id,
                 );
               },
             );

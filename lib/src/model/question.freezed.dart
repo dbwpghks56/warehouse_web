@@ -22,7 +22,7 @@ Question _$QuestionFromJson(Map<String, dynamic> json) {
 mixin _$Question {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
+  String? get content => throw _privateConstructorUsedError;
   int? get problemId => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
   String? get timeLimit => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $QuestionCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      String content,
+      String? content,
       int? problemId,
       String? tag,
       String? timeLimit,
@@ -78,7 +78,7 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? content = null,
+    Object? content = freezed,
     Object? problemId = freezed,
     Object? tag = freezed,
     Object? timeLimit = freezed,
@@ -100,10 +100,10 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      content: null == content
+      content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       problemId: freezed == problemId
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
@@ -163,7 +163,7 @@ abstract class _$$QuestionImplCopyWith<$Res>
   $Res call(
       {int id,
       String title,
-      String content,
+      String? content,
       int? problemId,
       String? tag,
       String? timeLimit,
@@ -190,7 +190,7 @@ class __$$QuestionImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? content = null,
+    Object? content = freezed,
     Object? problemId = freezed,
     Object? tag = freezed,
     Object? timeLimit = freezed,
@@ -212,10 +212,10 @@ class __$$QuestionImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      content: null == content
+      content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       problemId: freezed == problemId
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
@@ -291,7 +291,7 @@ class _$QuestionImpl implements _Question {
   @override
   final String title;
   @override
-  final String content;
+  final String? content;
   @override
   final int? problemId;
   @override
@@ -386,7 +386,7 @@ abstract class _Question implements Question {
   factory _Question(
       {required final int id,
       required final String title,
-      required final String content,
+      required final String? content,
       required final int? problemId,
       required final String? tag,
       required final String? timeLimit,
@@ -407,7 +407,7 @@ abstract class _Question implements Question {
   @override
   String get title;
   @override
-  String get content;
+  String? get content;
   @override
   int? get problemId;
   @override

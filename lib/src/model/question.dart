@@ -8,7 +8,7 @@ class Question with _$Question {
   factory Question({
     required int id,
     required String title,
-    required String content,
+    required String? content,
     required int? problemId,
     required String? tag,
     required String? timeLimit,
