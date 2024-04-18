@@ -17,8 +17,6 @@ class QuestionTile extends StatelessWidget {
     final List<String> tags = question.tag!.split(', ');
     tags.removeWhere((element) => element.isEmpty);
 
-    final String levelData;
-
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),

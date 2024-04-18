@@ -27,10 +27,6 @@ class QuestionDialog extends HookWidget {
 
     final result = detailQuestionQuery.result;
 
-    useEffect(() {
-      return null;
-    }, [result]);
-
     return Dialog(
       backgroundColor: Colors.white,
       child: buildDialog(result),
