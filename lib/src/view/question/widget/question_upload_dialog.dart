@@ -1,8 +1,10 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:http/http.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:warehouse_web/src/service/mutation.dart';
 import 'package:warehouse_web/src/view/toast/toast.dart';
 
@@ -19,6 +21,9 @@ class QuestionUploadDialog extends HookWidget {
         },
       ),
     );
+
+    final Uri url = Uri.parse(
+        'https://docs.google.com/uc?export=download&id=11p1Kf-SpSJ-mjEkFJwON2Pp9UQRZhG_W');
 
     final myFile = useState<MultipartFile>(MultipartFile.fromBytes(
       'file',
@@ -37,13 +42,13 @@ class QuestionUploadDialog extends HookWidget {
         ),
         padding: const EdgeInsets.all(12),
         width: 200,
-        height: 200,
+        height: 230,
         child: Stack(
           alignment: Alignment.center,
           children: [
             Positioned(
               top: -10,
-              right: 0,
+              right: -10,
               child: IconButton(
                 onPressed: () {
                   if (!loadingFlag.value) {
@@ -64,6 +69,20 @@ class QuestionUploadDialog extends HookWidget {
               children: [
                 const Text(
                   "※ 문제 업로드 페이지 \n ( Excel 파일만 업로드 가능합니다. 양식에 맞춘 Excel 파일을 업로드 해주세요. )",
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '양식 Excel 다운로드',
+                        style: const TextStyle(color: Colors.blue),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () async {
+                            await launchUrl(url);
+                          },
+                      ),
+                    ],
+                  ),
                 ),
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
