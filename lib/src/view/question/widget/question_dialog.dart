@@ -71,7 +71,7 @@ class QuestionDialog extends HookWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                "제목 : ${question.title}",
+                question.title,
                 style: const TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
@@ -89,16 +89,11 @@ class QuestionDialog extends HookWidget {
               const SizedBox(
                 height: 12,
               ),
-              Text("출처 : ${question.source!}"),
+              Text(question.source!),
               const SizedBox(
                 height: 12,
               ),
-              Text(
-                "난이도 : ${getRank(question)}",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              getRank(question),
               const SizedBox(
                 height: 12,
               ),

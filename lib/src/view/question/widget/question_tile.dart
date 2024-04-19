@@ -44,7 +44,7 @@ class QuestionTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("출처 : ${question.source}"),
+                    Text("${question.source}"),
                     const SizedBox(
                       height: 8,
                     ),
@@ -73,33 +73,14 @@ class QuestionTile extends StatelessWidget {
                   ],
                 ),
               ),
-              Column(
-                children: [
-                  Text("시간 제한 : ${question.timeLimit ?? '정보 없음'}"),
-                  Text("공간 제한 : ${question.memoryLimit ?? '정보 없음'}"),
-                  Text("평균시도 : ${question.averageTries ?? '정보 없음'}"),
-                  Text("총 시도 : ${question.totalTries ?? '정보 없음'}"),
-                ],
-              ),
               const SizedBox(width: 12),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    getRank(question),
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "맞힌 사람 : ${question.totalPerson ?? '정보 없음'}",
-                  ),
-                  Text(
-                    "정답률 : ${question.successRate ?? '정보 없음'} %",
-                  ),
-                  Text(
-                    "맞춘 시도 : ${question.totalSuccess ?? '정보 없음'}",
-                  ),
+                  getRank(question),
+                  Text("시간 제한 : ${question.timeLimit ?? '정보 없음'}"),
+                  Text("공간 제한 : ${question.memoryLimit ?? '정보 없음'}"),
+                  Text("총 시도 : ${question.totalTries ?? '정보 없음'}"),
                 ],
               )
             ],

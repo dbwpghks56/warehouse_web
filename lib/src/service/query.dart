@@ -24,7 +24,6 @@ class Queries {
           timeLimit
           memoryLimit
           level
-          averageTries
           totalTries
           totalPerson
           successRate
