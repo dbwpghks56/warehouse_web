@@ -69,12 +69,8 @@ class BaseView extends HookWidget {
                 const SizedBox(
                   width: 12,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: const EdgeInsets.all(12),
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
@@ -82,7 +78,14 @@ class BaseView extends HookWidget {
                         varialbeData: variableData.value,
                       ));
                     },
-                    child: const Icon(Icons.search),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: const EdgeInsets.all(12),
+                      child: const Icon(Icons.search),
+                    ),
                   ),
                 ),
                 const SizedBox(
