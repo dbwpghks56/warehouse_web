@@ -67,8 +67,6 @@ class QuestionDialog extends HookWidget {
         height: 600,
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
                 question.title,
@@ -94,6 +92,10 @@ class QuestionDialog extends HookWidget {
                 height: 12,
               ),
               getRank(question),
+              const SizedBox(
+                height: 12,
+              ),
+              Text("백준 ID : ${question.problemId ?? '정보 없음'}"),
               const SizedBox(
                 height: 12,
               ),

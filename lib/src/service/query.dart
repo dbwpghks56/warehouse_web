@@ -39,6 +39,7 @@ query detailQuestion(\$id: Long!) {
     id
     title
     content
+    problemId
     tag
     timeLimit
     memoryLimit
