@@ -67,6 +67,8 @@ class QuestionDialog extends HookWidget {
         height: 600,
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 question.title,
