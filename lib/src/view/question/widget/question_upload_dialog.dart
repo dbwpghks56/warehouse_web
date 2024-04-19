@@ -133,12 +133,16 @@ class QuestionUploadDialog extends HookWidget {
                         borderRadius: BorderRadius.circular(8),
                         color: const Color(0xFF89D3FB),
                       ),
-                      child: const Text(
-                        "파일 업로드",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: !loadingFlag.value
+                          ? const Text(
+                              "파일 업로드",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            )
+                          : const Center(
+                              child: CircularProgressIndicator(),
+                            ),
                     ),
                   ),
                 )
