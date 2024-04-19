@@ -101,7 +101,7 @@ class BaseView extends HookWidget {
                   : Column(
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height - 170,
+                          height: MediaQuery.of(context).size.height - 150,
                           child: ListView.builder(
                             itemCount: result
                                 .data!['questionList']['questions'].length,
@@ -119,9 +119,11 @@ class BaseView extends HookWidget {
                             },
                           ),
                         ),
-                        SizedBox(
-                          height: 100,
+                        Container(
+                          padding: const EdgeInsets.all(4),
+                          height: 84,
                           child: SingleChildScrollView(
+                            physics: const PageScrollPhysics(),
                             // scrollDirection: Axis.horizontal,
                             child: Wrap(
                               children: pageList.value
