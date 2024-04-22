@@ -14,8 +14,8 @@ class QuestionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> tags = question.tag!.split(', ');
-    tags.removeWhere((element) => element.isEmpty);
+    final List<String> tags = question.tag!.split(',');
+    tags.removeLast();
 
     return Container(
       margin: const EdgeInsets.all(8),

@@ -54,8 +54,8 @@ class QuestionDialog extends HookWidget {
     } else {
       final Question question =
           Question.fromJson(result.data?["detailQuestion"]);
-      final List<String> tags = question.tag!.split(', ');
-      tags.removeWhere((element) => element.isEmpty);
+      final List<String> tags = question.tag!.split(',');
+      tags.removeLast();
 
       return Container(
         decoration: BoxDecoration(
