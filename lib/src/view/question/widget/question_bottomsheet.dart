@@ -67,6 +67,7 @@ class QuestionBottomSheet extends HookWidget {
       final List<String> tags = tagString.value.split(',');
       tags.removeWhere((element) => element.isEmpty || element == " ");
 
+      final updateFlag = useState(false);
       final rankWidget = useState<Widget>(getRank(question));
       final rankIndex = useState(question.level);
 
@@ -202,6 +203,9 @@ class QuestionBottomSheet extends HookWidget {
                   ),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
