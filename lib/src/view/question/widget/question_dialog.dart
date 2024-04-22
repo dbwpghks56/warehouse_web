@@ -78,6 +78,15 @@ class QuestionDialog extends HookWidget {
                 ),
               ),
               const SizedBox(
+                height: 8,
+              ),
+              Container(
+                height: 1,
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                ),
+              ),
+              const SizedBox(
                 height: 12,
               ),
               Text(

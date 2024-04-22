@@ -124,6 +124,12 @@ class QuestionTile extends HookWidget {
                   border: Border.all(
                     color: Colors.white,
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 4,
+                    )
+                  ],
                   borderRadius: BorderRadius.circular(8),
                   color: const Color(0xFF89D3FB),
                 ),
