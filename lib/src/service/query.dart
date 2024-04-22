@@ -52,4 +52,17 @@ query detailQuestion(\$id: Long!) {
     source
   }
 }""";
+
+  static String updateBeforeQuestion = """
+query detailQuestion(\$id: Long!) {
+  detailQuestion(id: \$id) {
+    id
+    title
+    content
+    tag
+    timeLimit
+    memoryLimit
+    level
+  }
+}""";
 }

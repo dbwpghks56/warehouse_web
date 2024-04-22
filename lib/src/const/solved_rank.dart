@@ -133,7 +133,7 @@ List<Text> rankLevel = [
   const Text(
     'Platinum V',
     style: TextStyle(
-      color: Color(0xFFE5E4E2),
+      color: Color.fromARGB(255, 159, 229, 167),
       fontSize: 20,
       fontWeight: FontWeight.bold,
     ),
@@ -141,7 +141,7 @@ List<Text> rankLevel = [
   const Text(
     'Platinum IV',
     style: TextStyle(
-      color: Color(0xFFE5E4E2),
+      color: Color.fromARGB(255, 159, 229, 167),
       fontSize: 20,
       fontWeight: FontWeight.bold,
     ),
@@ -149,7 +149,7 @@ List<Text> rankLevel = [
   const Text(
     'Platinum III',
     style: TextStyle(
-      color: Color(0xFFE5E4E2),
+      color: Color.fromARGB(255, 159, 229, 167),
       fontSize: 20,
       fontWeight: FontWeight.bold,
     ),
@@ -157,7 +157,7 @@ List<Text> rankLevel = [
   const Text(
     'Platinum II',
     style: TextStyle(
-      color: Color(0xFFE5E4E2),
+      color: Color.fromARGB(255, 159, 229, 167),
       fontSize: 20,
       fontWeight: FontWeight.bold,
     ),
@@ -165,7 +165,7 @@ List<Text> rankLevel = [
   const Text(
     'Platinum I',
     style: TextStyle(
-      color: Color(0xFFE5E4E2),
+      color: Color.fromARGB(255, 159, 229, 167),
       fontSize: 20,
       fontWeight: FontWeight.bold,
     ),

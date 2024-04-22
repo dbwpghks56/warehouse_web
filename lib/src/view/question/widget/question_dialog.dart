@@ -55,7 +55,7 @@ class QuestionDialog extends HookWidget {
       final Question question =
           Question.fromJson(result.data?["detailQuestion"]);
       final List<String> tags = question.tag!.split(',');
-      tags.removeLast();
+      tags.removeWhere((element) => element.isEmpty || element == " ");
 
       return Container(
         decoration: BoxDecoration(
@@ -83,7 +83,7 @@ class QuestionDialog extends HookWidget {
               Text(
                 "상세 : ${question.content}",
                 style: const TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                 ),
               ),
               const SizedBox(
