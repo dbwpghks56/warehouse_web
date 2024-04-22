@@ -108,6 +108,7 @@ class QuestionTile extends HookWidget {
               onTap: () {
                 showDialog(
                   context: context,
+                  barrierDismissible: false,
                   builder: (context) {
                     return QuestionBottomSheet(
                       questionId: question.id,

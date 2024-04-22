@@ -60,6 +60,9 @@ class QuestionBottomSheet extends HookWidget {
       final Question question =
           Question.fromJson(result.data?["detailQuestion"]);
       final tagString = useState(question.tag!);
+      final titleString = useState(question.title);
+      final timeString = useState(question.timeLimit);
+      final memoryString = useState(question.memoryLimit);
 
       final List<String> tags = tagString.value.split(',');
       tags.removeWhere((element) => element.isEmpty || element == " ");
@@ -86,11 +89,15 @@ class QuestionBottomSheet extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextFormField(
-                        initialValue: question.title,
+                        initialValue: titleString.value,
+                        autovalidateMode: AutovalidateMode.always,
                         style: const TextStyle(
                           fontSize: 36,
                           fontWeight: FontWeight.bold,
                         ),
+                        onSaved: (newValue) {
+                          titleString.value = newValue!;
+                        },
                       ),
                       const SizedBox(
                         height: 12,
@@ -138,11 +145,14 @@ class QuestionBottomSheet extends HookWidget {
                           const Text("시간 제한 : "),
                           Expanded(
                             child: TextFormField(
-                              initialValue: question.timeLimit,
+                              initialValue: timeString.value,
+                              autovalidateMode: AutovalidateMode.always,
                               onSaved: (newValue) {
                                 if (!newValue!.contains("초")) {
                                   newValue = "$newValue 초";
                                 }
+
+                                timeString.value = newValue;
                               },
                             ),
                           )
@@ -156,10 +166,13 @@ class QuestionBottomSheet extends HookWidget {
                           const Text("공간 제한 : "),
                           Expanded(
                             child: TextFormField(
-                              initialValue: question.memoryLimit,
+                              initialValue: memoryString.value,
+                              autovalidateMode: AutovalidateMode.always,
                               onSaved: (newValue) {
                                 if (!newValue!.contains("MB")) {
                                   newValue = "$newValue MB";
+
+                                  memoryString.value = newValue;
                                 }
                               },
                             ),
@@ -181,6 +194,9 @@ class QuestionBottomSheet extends HookWidget {
                         onChanged: (value) {
                           tagString.value = value;
                         },
+                        onSaved: (newValue) {
+                          tagString.value = newValue!;
+                        },
                       ),
                     ],
                   ),
@@ -192,6 +208,15 @@ class QuestionBottomSheet extends HookWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      print(question.id);
+                      print(titleString.value);
+                      print(rankIndex.value);
+                      print(timeString.value);
+                      print(memoryString.value);
+                      print(tagString.value);
+                    }
                     Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
