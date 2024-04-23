@@ -42,6 +42,13 @@ class QuestionTile extends HookWidget {
                 ),
                 child: GestureDetector(
                   behavior: HitTestBehavior.translucent,
+                  onLongPress: () {
+                    updateFlag.value = !updateFlag.value;
+
+                    Future.delayed(const Duration(seconds: 2), () {
+                      updateFlag.value = !updateFlag.value;
+                    });
+                  },
                   onTap: () {
                     showDialog(
                       context: context,
