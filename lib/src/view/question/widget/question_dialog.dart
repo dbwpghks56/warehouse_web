@@ -5,6 +5,7 @@ import 'package:warehouse_web/src/const/solved_rank.dart';
 import 'package:warehouse_web/src/model/question.dart';
 import 'package:warehouse_web/src/service/query.dart';
 import 'package:warehouse_web/src/view/question/widget/question_tag.dart';
+import 'package:warehouse_web/util/tag_util.dart';
 
 class QuestionDialog extends HookWidget {
   const QuestionDialog({
@@ -54,8 +55,7 @@ class QuestionDialog extends HookWidget {
     } else {
       final Question question =
           Question.fromJson(result.data?["detailQuestion"]);
-      final List<String> tags = question.tag!.split(',');
-      tags.removeWhere((element) => element.isEmpty || element == " ");
+      final List<String> tags = getTags(question.tag!);
 
       return Container(
         decoration: BoxDecoration(
@@ -144,9 +144,7 @@ class QuestionDialog extends HookWidget {
               const SizedBox(
                 height: 12,
               ),
-              Row(
-                children: tags.map((e) => QuestionTag(tagName: e)).toList(),
-              ),
+              QuestionTag(tags: tags),
             ],
           ),
         ),

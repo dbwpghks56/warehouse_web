@@ -8,9 +8,10 @@ import 'package:warehouse_web/src/service/query.dart';
 import 'package:warehouse_web/src/view/question/widget/question_rank_modal.dart';
 import 'package:warehouse_web/src/view/question/widget/question_tag.dart';
 import 'package:warehouse_web/src/view/toast/toast.dart';
+import 'package:warehouse_web/util/tag_util.dart';
 
-class QuestionBottomSheet extends HookWidget {
-  QuestionBottomSheet({
+class QuestionUpdateDialog extends HookWidget {
+  QuestionUpdateDialog({
     super.key,
     required this.questionId,
   });
@@ -33,14 +34,14 @@ class QuestionBottomSheet extends HookWidget {
 
     return Dialog(
       backgroundColor: Colors.white,
-      child: buildBottomSheet(
+      child: buildUpdateDialog(
         result,
         context,
       ),
     );
   }
 
-  Widget buildBottomSheet(QueryResult<Object?> result, BuildContext context) {
+  Widget buildUpdateDialog(QueryResult<Object?> result, BuildContext context) {
     if (result.isLoading) {
       return Container(
         decoration: BoxDecoration(
@@ -66,8 +67,7 @@ class QuestionBottomSheet extends HookWidget {
       final timeString = useState(question.timeLimit);
       final memoryString = useState(question.memoryLimit);
 
-      final List<String> tags = tagString.value.split(',');
-      tags.removeWhere((element) => element.isEmpty || element == " ");
+      final List<String> tags = getTags(tagString.value);
 
       final loadingFlag = useState(false);
       final rankWidget = useState<Widget>(getRank(question));
@@ -198,10 +198,7 @@ class QuestionBottomSheet extends HookWidget {
                       const SizedBox(
                         height: 12,
                       ),
-                      Row(
-                        children:
-                            tags.map((e) => QuestionTag(tagName: e)).toList(),
-                      ),
+                      QuestionTag(tags: tags),
                       const SizedBox(
                         height: 12,
                       ),

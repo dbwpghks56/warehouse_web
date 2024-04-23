@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:warehouse_web/src/const/solved_rank.dart';
 import 'package:warehouse_web/src/model/question.dart';
-import 'package:warehouse_web/src/view/question/widget/question_bottomsheet.dart';
 import 'package:warehouse_web/src/view/question/widget/question_dialog.dart';
 import 'package:warehouse_web/src/view/question/widget/question_tag.dart';
+import 'package:warehouse_web/src/view/question/widget/question_update_dialog.dart';
+import 'package:warehouse_web/util/tag_util.dart';
 
 class QuestionTile extends HookWidget {
   const QuestionTile({
@@ -16,10 +17,8 @@ class QuestionTile extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> tags = question.tag!.split(',');
+    final List<String> tags = getTags(question.tag!);
     final updateFlag = useState(false);
-
-    tags.removeWhere((element) => element.isEmpty || element == " ");
 
     return Container(
       margin: const EdgeInsets.all(8),
@@ -80,12 +79,7 @@ class QuestionTile extends HookWidget {
                             const SizedBox(
                               height: 8,
                             ),
-                            Wrap(
-                              runSpacing: 4,
-                              children: tags
-                                  .map((e) => QuestionTag(tagName: e))
-                                  .toList(),
-                            )
+                            QuestionTag(tags: tags),
                           ],
                         ),
                       ),
@@ -110,7 +104,7 @@ class QuestionTile extends HookWidget {
                   context: context,
                   barrierDismissible: false,
                   builder: (context) {
-                    return QuestionBottomSheet(
+                    return QuestionUpdateDialog(
                       questionId: question.id,
                     );
                   },
