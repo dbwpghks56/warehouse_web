@@ -91,6 +91,7 @@ class QuestionBottomSheet extends HookWidget {
                     children: [
                       TextFormField(
                         initialValue: titleString.value,
+                        autofocus: true,
                         autovalidateMode: AutovalidateMode.always,
                         style: const TextStyle(
                           fontSize: 36,
@@ -155,6 +156,12 @@ class QuestionBottomSheet extends HookWidget {
 
                                 timeString.value = newValue;
                               },
+                              validator: (value) {
+                                if (!value!.contains("초")) {
+                                  return "뒤에 초 단위를 붙여주세요.";
+                                }
+                                return null;
+                              },
                             ),
                           )
                         ],
@@ -175,6 +182,12 @@ class QuestionBottomSheet extends HookWidget {
 
                                   memoryString.value = newValue;
                                 }
+                              },
+                              validator: (value) {
+                                if (!value!.contains("MB")) {
+                                  return "뒤에 MB 단위를 붙여주세요.";
+                                }
+                                return null;
                               },
                             ),
                           )
