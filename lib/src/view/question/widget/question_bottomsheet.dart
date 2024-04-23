@@ -3,9 +3,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:warehouse_web/src/const/solved_rank.dart';
 import 'package:warehouse_web/src/model/question.dart';
+import 'package:warehouse_web/src/service/mutation.dart';
 import 'package:warehouse_web/src/service/query.dart';
 import 'package:warehouse_web/src/view/question/widget/question_rank_modal.dart';
 import 'package:warehouse_web/src/view/question/widget/question_tag.dart';
+import 'package:warehouse_web/src/view/toast/toast.dart';
 
 class QuestionBottomSheet extends HookWidget {
   QuestionBottomSheet({
@@ -67,9 +69,18 @@ class QuestionBottomSheet extends HookWidget {
       final List<String> tags = tagString.value.split(',');
       tags.removeWhere((element) => element.isEmpty || element == " ");
 
-      final updateFlag = useState(false);
+      final loadingFlag = useState(false);
       final rankWidget = useState<Widget>(getRank(question));
       final rankIndex = useState(question.level);
+
+      final updateMutation = useMutation(
+        MutationOptions(
+          document: gql(Mutations.updateQuestion),
+          update: (cache, result) {
+            return cache;
+          },
+        ),
+      );
 
       return Container(
         decoration: BoxDecoration(
@@ -179,9 +190,9 @@ class QuestionBottomSheet extends HookWidget {
                               onSaved: (newValue) {
                                 if (!newValue!.contains("MB")) {
                                   newValue = "$newValue MB";
-
-                                  memoryString.value = newValue;
                                 }
+
+                                memoryString.value = newValue;
                               },
                               validator: (value) {
                                 if (!value!.contains("MB")) {
@@ -224,31 +235,57 @@ class QuestionBottomSheet extends HookWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
-                      print(question.id);
-                      print(titleString.value);
-                      print(rankIndex.value);
-                      print(timeString.value);
-                      print(memoryString.value);
-                      print(tagString.value);
+
+                      loadingFlag.value = true;
+
+                      final QueryResult<Object?>? mutationResult =
+                          await updateMutation.runMutation({
+                        'id': questionId,
+                        'request': {
+                          'title': titleString.value,
+                          'content': question.content,
+                          'tag': tagString.value,
+                          'timeLimit': timeString.value,
+                          'memoryLimit': memoryString.value,
+                          'level': rankIndex.value,
+                        },
+                      }).networkResult;
+
+                      loadingFlag.value = false;
+
+                      Navigator.of(context).pop();
+                    } else {
+                      Toast.show(
+                        "입력값을 확인해주세요.",
+                        duration: const Duration(seconds: 2),
+                      );
                     }
-                    Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF89D3FB),
                   ),
-                  child: const Text(
-                    '수정하기',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+                  child: !loadingFlag.value
+                      ? const Text(
+                          '수정하기',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        )
+                      : const CircularProgressIndicator(),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    if (!loadingFlag.value) {
+                      Navigator.of(context).pop();
+                    } else {
+                      Toast.show(
+                        "수정중입니다.",
+                        duration: const Duration(seconds: 2),
+                      );
+                    }
                   },
                   child: const Text('취소'),
                 ),
