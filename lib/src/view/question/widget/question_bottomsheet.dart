@@ -274,7 +274,9 @@ class QuestionBottomSheet extends HookWidget {
                             color: Colors.white,
                           ),
                         )
-                      : const CircularProgressIndicator(),
+                      : const Center(
+                          child: CircularProgressIndicator(),
+                        ),
                 ),
                 ElevatedButton(
                   onPressed: () {
