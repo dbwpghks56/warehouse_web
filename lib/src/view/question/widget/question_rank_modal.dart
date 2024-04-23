@@ -15,9 +15,13 @@ class RankModal extends HookWidget {
     return Dialog(
       backgroundColor: Colors.white,
       child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white,
+        ),
         width: 500,
         height: 400,
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(16),
         child: Center(
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -32,6 +36,7 @@ class RankModal extends HookWidget {
                   selectRank(index);
                 },
                 child: Container(
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(8),
