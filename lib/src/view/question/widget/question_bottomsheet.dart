@@ -115,15 +115,6 @@ class QuestionBottomSheet extends HookWidget {
                       const SizedBox(
                         height: 12,
                       ),
-                      Text(
-                        "상세 : ${question.content}",
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -222,6 +213,15 @@ class QuestionBottomSheet extends HookWidget {
                         onSaved: (newValue) {
                           tagString.value = newValue!;
                         },
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      Text(
+                        "상세 : ${question.content}",
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
