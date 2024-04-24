@@ -253,6 +253,11 @@ class QuestionUpdateDialog extends HookWidget {
 
                       loadingFlag.value = false;
 
+                      Toast.show(
+                        "수정되었습니다.",
+                        duration: const Duration(seconds: 2),
+                      );
+
                       Navigator.of(context).pop();
                     } else {
                       Toast.show(
