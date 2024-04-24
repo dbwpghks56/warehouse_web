@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:warehouse_web/src/const/solved_rank.dart';
+import 'package:warehouse_web/util/const/solved_rank.dart';
 import 'package:warehouse_web/src/model/question.dart';
 import 'package:warehouse_web/src/view/question/widget/question_dialog.dart';
 import 'package:warehouse_web/src/view/question/widget/question_tag.dart';

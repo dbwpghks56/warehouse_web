@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:warehouse_web/src/const/http_link.dart';
+import 'package:warehouse_web/util/const/http_link.dart';
 import 'package:warehouse_web/src/view/root_view.dart';
 
 void main() {
