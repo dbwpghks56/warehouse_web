@@ -204,6 +204,15 @@ class QuestionUpdateDialog extends HookWidget {
                       ),
                       TextFormField(
                         initialValue: tagString.value,
+                        decoration: const InputDecoration(
+                          hintText: "태그를 입력해주세요.",
+                          label: Text(
+                            "태그 - 쉼표로 구분지어 입력해주세요.",
+                            strutStyle: StrutStyle(
+                              forceStrutHeight: true,
+                            ),
+                          ),
+                        ),
                         onChanged: (value) {
                           tagString.value = value;
                         },
